@@ -1,0 +1,1 @@
+# potens-intern-aiml-janvi-adam
