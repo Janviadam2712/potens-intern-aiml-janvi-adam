@@ -56,3 +56,8 @@ I used fixed-size chunking (500 characters, 50 character overlap) via LangChain'
 - 500 characters with overlap balances citation precision against enough context for the LLM to understand it.
 
 Note: I first used pypdf to extract text. But 3 of my 5 PDFs used Object Streams encoding. pypdf could not parse them correctly. As a result, it extracted no text. No errors were reported. Switched to PyMuPDF (`fitz`), which handled all 5 files correctly. This is documented here as an example of a real debugging decision made during the build. It is not a copied tutorial choice.
+
+## Multilingual RAG Citation System
+
+A retrieval-augmented QA system with citation tracking and multilingual support (Hindi and English).
+
