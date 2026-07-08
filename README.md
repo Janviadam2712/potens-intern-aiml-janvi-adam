@@ -3,7 +3,8 @@
 ## AIML - Document Q&A with Citations
 ### Context-RAG: Research Paper Q&A with Citations
 
-"Ask questions across Context Engineering research papers and get answers with exact citations — or an honest "not covered" instead of a guess."
+"Ask questions about Context Engineering research papers and get answers with exact citations.
+Or get an honest “not covered” instead of a guess"
 
 ## Demo
 (Screenshot/GIF to be added once the Streamlit UI is complete — see Setup Instructions to run locally in the meantime.)
@@ -16,7 +17,7 @@ This project answers questions from a set of research papers on Context Engineer
 ### Who They Are?
 Name: Shreya, the ML Engineer
 Role: Junior-to-mid ML engineer
-Technical level: Comfortable with code, NOT an expert in every subfield — reads papers regularly but doesn't have time to deep-read all of them.
+Technical level: Comfortable with code, but not an expert in every subfield. Reads papers often, but lacks time to study each one deeply.
 
 ### Shreya's Actual Problem -
 New Context Engineering papers drop weekly.
@@ -35,16 +36,23 @@ Multi-turn conversation memory — she asks one question at a time, moves on.
 Perfect grammar in answers — she cares about accuracy and sourcing, not prose quality.
 
 ### One-Line Persona Summary -
-Built for an ML practitioner doing rapid literature review across Context Engineering papers — someone who trusts a citation over a confident-sounding sentence, and needs contradictions between papers surfaced, not smoothed over.
+Built for an ML practitioner doing fast literature reviews of Context Engineering papers. They trust citations over confident sentences. They need contradictions between papers surfaced, not smoothed over.
 
 ### Why this Persona Shapes my actual Design Decisions?
 Chunking → smaller, precise chunks (favors exact citation over broad summary).
-Refusal message → technical and direct ("Not covered in the provided documents") rather than soft/apologetic — she wants speed, not hand-holding.
+Refusal message: Keep it technical and direct.
+Say, “Not covered in the provided documents.”
+Avoid soft or apologetic wording.
+She wants speed, not hand-holding.
+
 Contradiction endpoint → framed as a research tool feature, not an edge case — it's core to her actual workflow.
 UI → functional over beautiful — she'll forgive a plain Streamlit page if the citations are solid.
 
-## Chunking Strategy -
+## Chunking Strategy
+
 I used fixed-size chunking (500 characters, 50 character overlap) via LangChain's RecursiveCharacterTextSplitter. I chose this over semantic/header-based chunking because:
-- My 5 papers have inconsistent formatting (arXiv PDFs, no clean uniform headers).
+- My papers have inconsistent PDF formatting (arXiv-generated, no clean uniform headers).
 - Fixed-size chunking is predictable and easier to debug under time pressure.
-- 500 chars with overlap balances citation precision (small enough to point to a specific claim) against enough context for the LLM to understand it.
+- 500 characters with overlap balances citation precision against enough context for the LLM to understand it.
+
+Note: I first used pypdf to extract text. But 3 of my 5 PDFs used Object Streams encoding. pypdf could not parse them correctly. As a result, it extracted no text. No errors were reported. Switched to PyMuPDF (`fitz`), which handled all 5 files correctly. This is documented here as an example of a real debugging decision made during the build. It is not a copied tutorial choice.
