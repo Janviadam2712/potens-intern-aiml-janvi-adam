@@ -42,3 +42,9 @@ Chunking → smaller, precise chunks (favors exact citation over broad summary).
 Refusal message → technical and direct ("Not covered in the provided documents") rather than soft/apologetic — she wants speed, not hand-holding.
 Contradiction endpoint → framed as a research tool feature, not an edge case — it's core to her actual workflow.
 UI → functional over beautiful — she'll forgive a plain Streamlit page if the citations are solid.
+
+## Chunking Strategy -
+I used fixed-size chunking (500 characters, 50 character overlap) via LangChain's RecursiveCharacterTextSplitter. I chose this over semantic/header-based chunking because:
+- My 5 papers have inconsistent formatting (arXiv PDFs, no clean uniform headers).
+- Fixed-size chunking is predictable and easier to debug under time pressure.
+- 500 chars with overlap balances citation precision (small enough to point to a specific claim) against enough context for the LLM to understand it.
