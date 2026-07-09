@@ -1,0 +1,13 @@
+
+Retrieval@top-k Accuracy: 10/10 = 100.0%
+
+✅ What is context engineering? | expected: 2507.13334v2.pdf | got: 2507.13334v2.pdf
+✅ What does ACE stand for? | expected: 2510.04618v3.pdf | got: 2510.04618v3.pdf
+✅ Does providing context files improve coding agent performance? | expected: 2602.11988v2.pdf | got: 2602.11988v2.pdf
+✅ What is SWE Context Bench designed to evaluate? | expected: 2602.08316v3.pdf | got: 2602.08316v3.pdf
+✅ What happens to model performance as context length increases? | expected: 2307.03172v3.pdf | got: 2307.03172v3.pdf
+✅ What percentage performance gain does ACE report? | expected: 2510.04618v3.pdf | got: 2510.04618v3.pdf
+✅ What is 'context rot'? | expected: 2507.13334v2.pdf | got: 2510.04618v3.pdf
+✅ How many tasks does SWE Context Bench evaluate? | expected: 2602.08316v3.pdf | got: 2602.08316v3.pdf
+✅ What is the capital of France? | expected: None | got: 2307.03172v3.pdf
+✅ What stock should I invest in? | expected: None | got: 2307.03172v3.pdf
